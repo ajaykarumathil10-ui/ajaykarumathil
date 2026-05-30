@@ -1,0 +1,118 @@
+/* .card {
+    background-color: black;
+}
+
+.card-descr {
+    color: #ffef3c;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.card-text {
+    color: beige;
+}
+
+/* .card-title {
+    background-color: #ffef3c;
+    text-align: center;
+    padding: 5%;
+    font-size: 1.0rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+} */
+
+/*.card-header,
+body {
+    background-color: #ffef3c;
+} */
+
+/* Container framework styling */
+.dialog-frame-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-dark-slate, #161b22);
+    /* Aligns with your cinematic token system */
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+/* Header locks cleanly to the top without shifting layout points */
+.dialog-sticky-header {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--cinema-yellow, #ffef3c);
+    /* Matches the prominent top banner in image_e4a25b.png */
+    padding: 1rem 1.5rem;
+    position: relative;
+    z-index: 11;
+}
+
+.dialog-sticky-header .card-title {
+    margin: 0;
+    color: #000000;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Interactive Top Right Cancel Pointer Button */
+.dialog-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #000000;
+    transition: transform 0.2s ease;
+}
+
+.dialog-close-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Scroll Window Parameters Configuration */
+.dialog-scrollable-body {
+    max-height: 70vh;
+    /* Limits panel depth on desktop viewports so scrolling triggers predictably */
+    overflow-y: auto;
+    /* Injects vertical scrollbars dynamically only when text pushes boundaries */
+    overflow-x: hidden;
+    background-color: #0d1117;
+    /* Keeps the deep dark void backdrop context intact */
+}
+
+/* Scrollbar Customization for Modern Scroll Experiences */
+.dialog-scrollable-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dialog-scrollable-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dialog-scrollable-body::-webkit-scrollbar-thumb {
+    background: var(--border-muted, #21262d);
+    border-radius: 3px;
+}
+
+/* Inner Text Padding Structures */
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-descr {
+    color: var(--cinema-yellow, #ffef3c);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.card-text {
+    color: #c9d1d9;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}

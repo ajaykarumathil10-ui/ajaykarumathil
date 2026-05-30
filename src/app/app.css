@@ -1,0 +1,13 @@
+.card{
+  background-color: black;
+}
+.card-text
+{
+    color: beige;
+}
+
+.card-title{
+    background-color: #ffef3c;
+    text-align: center;
+    padding: 5%;
+}

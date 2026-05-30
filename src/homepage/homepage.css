@@ -1,0 +1,684 @@
+/* ==========================================================================
+   1. GLOBAL STYLES & VARIABLE TOKENS
+   ========================================================================== */
+:host {
+  --cinema-yellow: #ffef3c;
+  --ivory-cream: #f9f8f6;
+  --deep-abyss: #0d1117;
+  --card-dark-slate: #161b22;
+  --border-muted: #21262d;
+  --text-grey: #8b949e;
+}
+
+.cinematic-shell {
+  background-color: var(--deep-abyss);
+  color: var(--ivory-cream);
+  min-height: 100vh;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  /* Safeguards content from sliding under the global fixed header across all screens */
+  padding-top: 80px;
+}
+
+/* ==========================================================================
+   2. GLOBAL NAVIGATION BAR
+   ========================================================================== */
+.site-navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: rgba(13, 17, 23, 0.9);
+  /* Replaced fallback with clean, high-contrast dark palette context */
+  border-bottom: 1px solid var(--border-muted);
+  position: fixed;
+  /* Enforces absolute coordinate docking across desktop & mobile viewports */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  /* Keeps layout safely layered above hero sliders and timelines */
+  backdrop-filter: blur(8px);
+  box-sizing: border-box;
+}
+
+.brand-main {
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 1.3rem;
+  display: block;
+}
+
+.brand-sub {
+  font-size: 0.65rem;
+  color: var(--cinema-yellow);
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.nav-status-tag {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  border: 1px solid var(--cinema-yellow);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  color: var(--ivory-cream);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   3. CINEMATIC HERO SLIDER (BOTTOM-ALIGNED TEXT LAYER)
+   ========================================================================== */
+.grand-hero-slider {
+  height: 55vh;
+  min-height: 520px;
+  background-size: cover;
+  background-position: center 22%;
+  background-repeat: no-repeat;
+  position: relative;
+  /* Anchor for absolute dark gradient veil stack */
+  display: flex;
+  align-items: flex-end;
+  /* Vertically pushes the text billboard block to the bottom */
+  padding: 3.5rem;
+  /* Safe margins surrounding the bottom text content */
+  box-sizing: border-box;
+}
+
+.slider-dark-veil {
+  position: absolute;
+  inset: 0;
+  /* Bottom-up dark gradient protection to avoid blocking faces while ensuring text contrast */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 100%);
+  z-index: 1;
+}
+
+.slider-billboard-content {
+  position: relative;
+  z-index: 12;
+  /* Places text layers safely above the dark protection veil */
+  max-width: 750px;
+  margin-top: auto;
+  /* Double-reinforces bottom alignment layout flow */
+}
+
+.slider-tag {
+  color: var(--cinema-yellow);
+  font-weight: 800;
+  letter-spacing: 4px;
+  font-size: .85rem;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.slider-billboard-content h2 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  /* Dropped shadow for ultra crisp white readability */
+}
+
+.carousel-indicator-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.carousel-indicator-dots .dot {
+  width: 24px;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.carousel-indicator-dots .dot.active {
+  background-color: var(--cinema-yellow);
+}
+
+/* ==========================================================================
+   4. DUAL COLUMN MAGAZINE GRID LAYOUT
+   ========================================================================== */
+.magazine-grid-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: 3.5rem;
+}
+
+/* Section Header Titles */
+.section-title-ribbon {
+  margin-bottom: 2.5rem;
+}
+
+.section-title-ribbon h2 {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: var(--ivory-cream);
+  margin: 0 0 0.5rem 0;
+}
+
+.ribbon-line {
+  height: 3px;
+  width: 45px;
+  background-color: var(--cinema-yellow);
+}
+
+/* ==========================================================================
+   5. LEFT PANEL - PROJECT POSTER TILES MASONRY GRID
+   ========================================================================== */
+.posters-masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.poster-card {
+  background-color: var(--card-dark-slate);
+  border: 1px solid var(--border-muted);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.poster-card:hover {
+  transform: translateY(-4px);
+}
+
+.poster-image-frame {
+  position: relative;
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.poster-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.poster-card:hover .poster-image-frame img {
+  transform: scale(1.05);
+}
+
+.poster-category-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--cinema-yellow);
+  color: black;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 0.4rem 0.8rem;
+  text-transform: uppercase;
+}
+
+.poster-details {
+  padding: 1.5rem;
+}
+
+.poster-details h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.poster-details p {
+  font-size: 0.85rem;
+  color: var(--text-grey);
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  height: 65px;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   BUTTON GLOBAL CORE WITH ANIMATED GLOWING BORDER TRACE
+   ========================================================================== */
+.read-more-btn {
+  position: relative;
+  background-color: transparent; /* Stripped background color so light rays shine through */
+  border: none;                  /* Removed old border structure to allow gradient path */
+  color: black;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 6px;
+  box-sizing: border-box;
+  box-shadow: 0 0 12px rgba(255, 239, 60, 0.8);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+/* Moving Light Core */
+.read-more-btn::before {
+  content: '';
+  position: absolute;
+  top: -150%;
+  left: -50%;
+  width: 200%;
+  height: 400%;
+  background: conic-gradient(
+    transparent,
+    rgba(255, 239, 40, 0.2) 10%,
+    #ffffff 15%, /* The bright spotlight beam point */
+    var(--cinema-yellow) 50%,
+    transparent 70%
+  );
+  z-index: -2;
+  animation: borderGlowTrace 3s linear infinite;
+}
+
+/* Mask to isolate the glowing edge and keep the center yellow solid */
+.read-more-btn::after {
+  content: '';
+  position: absolute;
+  inset: 2px; /* Set thickness of your tracing wire border (2px) */
+  background-color: var(--cinema-yellow);
+  border-radius: 2px;
+  z-index: -1;
+  transition: background-color 0.2s ease;
+}
+
+.read-more-btn:hover {
+  box-shadow: 0 0 22px rgba(255, 239, 60, 0.65);
+  transform: translateY(-1px);
+}
+
+.read-more-btn:hover::after {
+  background-color: #ffe600; /* Subtle hover color feedback */
+}
+
+/* ==========================================================================
+   6. RIGHT PANEL - BIOGRAPHY & BRAND SIDEBAR CARD WITH SIGNATURE ENGINE
+   ========================================================================== */
+.about-sidebar-card {
+  background-color: var(--card-dark-slate);
+  border: 1px solid var(--border-muted);
+  padding: 2rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.sidebar-prose {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #c9d1d9;
+  text-align: justify;
+  margin: 0 0 2rem 0;
+}
+
+.artistic-signature-area {
+  display: block;
+  text-align: right;
+  width: 100%;
+}
+
+.signature-svg {
+  overflow: visible;
+}
+
+.script-signature-path {
+  font-family: 'Brush Script MT', 'Dancing Script', 'Segoe Script', cursive;
+  font-size: 2.8rem;
+  fill: rgba(249, 248, 246, 0); /* Starts fully translucent inside internal paths */
+  stroke: var(--ivory-cream, #f9f8f6);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  
+  /* Creates massive virtual dash spaces to trick draw calculations */
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  
+  /* Animation handles linear stroke drawing first, then transitions into inner text fills */
+  animation: writeSignatureEffect 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.signature-line-group {
+  margin-top: -5px;
+  margin-bottom: 1.5rem;
+}
+
+.signature-underline {
+  height: 1px;
+  width: 0; /* Initializes at 0 length footprint */
+  background: linear-gradient(to left, var(--cinema-yellow), transparent);
+  margin-left: auto;
+  animation: drawUnderlineEffect 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 2.2s; /* Delays draw window until name signature reaches 80% completion */
+}
+
+.signature-underline.second-line {
+  margin-top: 3px;
+  animation-delay: 2.4s;
+}
+
+/* Fixed Image Feature Blocks */
+.feature-banner-frame {
+  position: relative;
+  height: 180px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-muted);
+}
+
+.feature-banner-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-text-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, transparent 80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+}
+
+.banner-text-overlay h4 {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin: 0 0 0.25rem 0;
+  color: var(--cinema-yellow);
+  font-weight: 800;
+}
+
+.banner-text-overlay p {
+  font-size: 0.85rem; /* Fixed typo constraint bug here */
+  margin: 0;
+  color: #c9d1d9;
+}
+
+/* ==========================================================================
+   7. ENFORCED CODESYMBOLS TIMELINE TIMELINE LINE MECHANISM
+   ========================================================================== */
+.artistic-timeline-container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  background-color: var(--card-dark-slate);
+  border: 1px solid var(--border-muted);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.timeline-header-block {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.timeline-main-title {
+  font-family: 'Georgia', serif;
+  font-size: 2.25rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0 0 0.75rem 0;
+  color: var(--ivory-cream);
+}
+
+.title-underline {
+  height: 2px;
+  width: 50px;
+  background-color: var(--cinema-yellow);
+  margin: 0 auto;
+}
+
+.symbol-timeline-track {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 4rem auto;
+  padding: 1.5rem 0;
+  box-sizing: border-box;
+}
+
+.connecting-wire {
+  position: absolute;
+  top: 75%;
+  /* Intersects perfectly with circle node bounds */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(139, 148, 158, 0.2);
+  z-index: 1;
+}
+
+.nodes-flex-row {
+  display: flex !important;
+  /* Overrides vertical processing constraints */
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.timeline-node-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+}
+
+.node-year-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-grey);
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.code-symbol-circle {
+  width: 46px;
+  height: 46px;
+  background-color: var(--deep-abyss);
+  border: 2px solid var(--border-muted);
+  border-radius: 50% !important;
+  /* Retains crisp circular format shapes */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.symbol-txt {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-grey);
+}
+
+/* Node Interactions & State Highlights */
+.timeline-node-wrapper:hover .code-symbol-circle {
+  border-color: #cbd5e1;
+}
+
+.timeline-node-wrapper:hover .node-year-label {
+  color: var(--ivory-cream);
+}
+
+.timeline-node-wrapper.active .node-year-label {
+  color: var(--cinema-yellow);
+  font-weight: 700;
+}
+
+.timeline-node-wrapper.active .code-symbol-circle {
+  border-color: var(--cinema-yellow);
+  background-color: var(--cinema-yellow);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 239, 60, 0.4);
+}
+
+.timeline-node-wrapper.active .symbol-txt {
+  color: var(--deep-abyss);
+  /* Flips dark for visibility inside active yellow node background */
+}
+
+/* Narrative Output Viewport */
+.timeline-narrative-display {
+  min-height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(33, 38, 45, 0.5);
+  padding-top: 2rem;
+}
+
+.narrative-card {
+  text-align: center;
+  max-width: 750px;
+}
+
+.narrative-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--cinema-yellow);
+  margin: 0 0 0.75rem 0;
+}
+
+.narrative-body {
+  font-family: 'Georgia', serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #c9d1d9;
+  margin: 0;
+}
+
+/* ==========================================================================
+   8. SCENIC FOOTER STAGE CURTAIN
+   ========================================================================== */
+.scenic-curtain-footer {
+  border-top: 1px solid var(--border-muted);
+  background-color: #090d13;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.scenic-curtain-footer p {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--text-grey);
+  margin: 0;
+}
+
+/* ==========================================================================
+   9. RUNTIME HARDWARE ACCELERATED CORE ANIMATIONS
+   ========================================================================== */
+.animate-fade-in {
+  animation: filterBlurFade 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes filterBlurFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes borderGlowTrace {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes writeSignatureEffect {
+  to {
+    stroke-dashoffset: 0;
+    fill: rgba(249, 248, 246, 1); /* Gracefully introduces solid text body fill upon path track exit */
+  }
+}
+
+@keyframes  drawUnderlineEffect {
+  to {
+    width: 140px; /* Triggers vector layout reveal to standard card limits */
+  }
+}
+
+/* ==========================================================================
+   10. RESPONSIVE MEDIA BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 968px) {
+  .magazine-grid-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 2rem 1rem;
+  }
+
+  .site-navigation-bar {
+    padding: 1rem 1.5rem;
+  }
+
+  .cinematic-shell {
+    padding-top: 60px;
+    /* Adapts layout depth on smaller viewport sizes */
+  }
+
+  .grand-hero-slider {
+    padding: 2rem 1.5rem;
+    height: 50vh;
+  }
+
+  .slider-billboard-content h2 {
+    font-size: 1.85rem;
+  }
+
+  .symbol-timeline-track {
+    width: 100%;
+  }
+
+  .code-symbol-circle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .symbol-txt {
+    font-size: 0.85rem;
+  }
+
+  .narrative-title {
+    font-size: 1.25rem;
+  }
+
+  .narrative-body {
+    font-size: 1rem;
+  }
+}
+

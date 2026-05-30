@@ -1,0 +1,23 @@
+<div class="dialog-frame-wrapper">
+  
+  <!-- Fixed Header Layer Sticky to Top -->
+  <div class="dialog-sticky-header">
+    <h5 class="card-title">{{ displayValue.title | uppercase }}</h5>
+    <button mat-icon-button mat-dialog-close class="dialog-close-btn">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+
+  <!-- Scrollable Card Body Area -->
+  <div class="dialog-scrollable-body">
+    <img [src]="displayValue.image" class="card-img-top" alt="Feature Preview Image">
+    
+    <div class="card-body">
+      <p class="card-descr">{{ displayValue.description }}</p>
+      <p class="card-text">{{ displayValue.statement }}</p>
+    </div>
+    
+    <div class="card-header-spacer"></div>
+  </div>
+
+</div>

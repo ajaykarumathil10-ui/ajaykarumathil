@@ -1,0 +1,16 @@
+.menuButton{
+    color: white;
+    background-color: black;
+    border-radius: 100%;
+
+    /* Increase these values to your liking */
+    font-size: 40px;      /* Size of the actual '+' symbol */
+    width: 60px;         /* Width of the purple circle */
+    height: 60px;        /* Height of the purple circle */
+    
+    /* Alignment Fixes */
+    display: inline-flex;  /* Helps with centering */
+    align-items: center;   /* Vertical center */
+    justify-content: center; /* Horizontal center */
+    line-height: 60px;     /* Matches height for font-vertical alignment */
+}
