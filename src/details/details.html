@@ -15,9 +15,11 @@
     <div class="card-body">
       <p class="card-descr">{{ displayValue.description }}</p>
       <p class="card-text">{{ displayValue.statement }}</p>
-      <a href="https://www.youtube.com/@AjayCodeStudio/videos" target="_blank" class="launch-channel-btn">
+      @if(displayValue.category=="LEARNING")
+      {<a href="https://www.youtube.com/@AjayCodeStudio/videos" target="_blank" class="launch-channel-btn">
         Go to Youtube Channel
       </a>
+      }
     </div>
     <div class="card-header-spacer"></div>
   </div>

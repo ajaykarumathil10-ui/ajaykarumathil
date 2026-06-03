@@ -120,7 +120,7 @@ export class ProfileService {
     },
     {
       image: 'aicoding.gif',
-      category: 'LEARNING',
+      category: 'COURSE',
       title: 'AI Integrated Coding Classes on Specific Topic',
       description: 'Spearheading application modernizations using state-managed systems.',
       action: "Learn",
@@ -134,7 +134,7 @@ export class ProfileService {
     },
     {
       image: 'teaching.png',
-      category: 'Teaching',
+      category: 'LEARNING',
       title: 'Full-Stack & SQL Core Code Tutorials on YouTube',
       description: 'Teaching comprehensive, real-world database optimizations and framework architectures.',
       action: "More details",

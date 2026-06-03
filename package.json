@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --configuration production --base-href /ajaykarumathil/ && npx angular-cli-ghpages --clear && npx angular-cli-ghpages --dir=dist/ajay-karumathil/browser"
   },
   "private": true,
   "packageManager": "npm@11.9.0",

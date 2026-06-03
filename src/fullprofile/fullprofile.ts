@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ProfileService } from '../service/profile-service';
@@ -10,11 +10,21 @@ import { ProfileService } from '../service/profile-service';
   templateUrl: './fullprofile.html',
   styleUrl: './fullprofile.css'
 })
-export class Fullprofile {
+export class Fullprofile implements OnInit {
+  ngOnInit(): void {
+    if (window.innerWidth <= 650) {
+      this.shortDevice = true;
+      console.log('this.shortDevice:', this.shortDevice);
+    }
+    else {
+      console.log('this.shortDevice ', this.shortDevice);
+      this.shortDevice = false;
+    }
+  }
   profile = inject(ProfileService);
   // Track the active year selected by the user (default to the first milestone)
   selectedYear = signal<string>('2020');
-
+  shortDevice: boolean = false;
   timelineMilestones = signal([
     {
       year: '2020',
