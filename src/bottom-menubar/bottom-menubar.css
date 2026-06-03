@@ -1,16 +1,66 @@
-.menuButton{
-    color: white;
-    background-color: black;
-    border-radius: 100%;
+/* ==========================================================================
+   1. GLOBAL STYLES & VARIABLE TOKENS
+   ========================================================================== */
+:host {
+    --cinema-yellow: #ffef3c;
+    --ivory-cream: #f9f8f6;
+    --deep-abyss: #0d1117;
+    --card-dark-slate: #161b22;
+    --border-muted: #21262d;
+    --text-grey: #8b949e;
+}
 
-    /* Increase these values to your liking */
-    font-size: 40px;      /* Size of the actual '+' symbol */
-    width: 60px;         /* Width of the purple circle */
-    height: 60px;        /* Height of the purple circle */
-    
-    /* Alignment Fixes */
-    display: inline-flex;  /* Helps with centering */
-    align-items: center;   /* Vertical center */
-    justify-content: center; /* Horizontal center */
-    line-height: 60px;     /* Matches height for font-vertical alignment */
+.cinematic-shell {
+    background-color: var(--deep-abyss);
+    color: var(--ivory-cream);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    /* Safeguards content from sliding under the global fixed header across all screens */
+}
+
+/*==========================================================================
+   2. GLOBAL NAVIGATION BAR
+   ========================================================================== */
+.site-navigation-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background-color: rgba(13, 17, 23, 0.9);
+    /* Replaced fallback with clean, high-contrast dark palette context */
+    border-bottom: 1px solid var(--border-muted);
+    position: fixed;
+    /* Enforces absolute coordinate docking across desktop & mobile viewports */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Keeps layout safely layered above hero sliders and timelines */
+    backdrop-filter: blur(8px);
+    box-sizing: border-box;
+}
+
+.brand-main {
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-size: 1.3rem;
+    display: block;
+}
+
+.brand-sub {
+    font-size: 0.65rem;
+    color: var(--cinema-yellow);
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.nav-status-tag {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    border: 1px solid var(--cinema-yellow);
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    color: var(--ivory-cream);
+    font-weight: 600;
 }

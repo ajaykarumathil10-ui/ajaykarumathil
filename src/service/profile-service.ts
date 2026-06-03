@@ -9,6 +9,7 @@ export interface CarouselSlide {
 export interface TimelineNode {
   year: string;
   symbol: string;      // The Material Icon name text identifier mapped to mat-icon
+  image: string;
   title: string;
   description: string;
 }
@@ -32,7 +33,7 @@ export class ProfileService {
   // Hero Carousel Images & Details (The top massive banner sliders with clean query parameters removed)
   carouselSlides = signal<CarouselSlide[]>([
     {
-      image: 'beachresortpic.png',
+      image: 'officialpic.png',
       title: 'ENGINEERING WITHOUT BOUNDARIES',
       subtitle: 'Designing Scalable Systems From a Foundation of Absolute Logic'
     },
@@ -52,34 +53,39 @@ export class ProfileService {
   timelineData = signal<TimelineNode[]>([
     {
       year: '2020',
-      symbol: 'school', // Represents the graduation cap for your MCA
+      symbol: 'cap.png',
+      image: 'pgpic.png',
       title: 'Academic Foundation & Post-Graduation',
-      description: 'Completed Post-Graduate Master of Computer Applications (MCA), mastering advanced computing algorithms, relational database theory, and structural system design.'
+      description: 'Graduated with a Master of Computer Applications (MCA) with First Class Distinction, demonstrating academic excellence and expertise in advanced computing, database management, and software architecture.'
     },
     {
       year: '2021',
-      symbol: 'terminal', // Represents entering the core backend engineering space
+      symbol: 'lion2.png',
+      image: 'lb1.png',
       title: 'Enterprise Consultancy & Backend Systems',
-      description: 'Entered the multinational IT consultancy landscape as a Technical Consultant, architecting high-concurrency enterprise backend layers and managing complex data workflows.'
+      description: 'Joined Lionbridge as a Technical Consultant, delivering technology solutions for enterprise clients, developing robust backend components, optimizing data workflows, and collaborating with global teams to support business-critical applications.'
     },
     {
-      year: '2023',
-      symbol: 'trending_up', // Represents your promotion milestone
+      year: '2022',
+      symbol: 'up.png', // Represents your promotion milestone
+      image: 'lb2.png',
       title: 'Ascension to Software Engineering Leadership',
       description: 'Earned a strategic career promotion following successful delivery cycles, spearheading end-to-end full-stack integration and mentoring junior engineering tracks.'
     },
     {
       year: '2024',
-      symbol: 'business', // Represents your move to the Infosys corporate campus
+      symbol: 'infosyslogo.png',
+      image: 'infy1.png',
       title: 'The Infosys Era & Large-Scale Engineering',
-      description: 'Joined Infosys Chennai as a Senior Specialist, taking charge of mission-critical application modernizations and scalable ecosystem patterns.'
+      description: 'Embarked on a new chapter at Infosys Chennai as a Senior Specialist, collaborating with global clients to engineer next-generation digital solutions, integrate AI-powered innovations, modernize mission-critical platforms, and build resilient, scalable enterprise ecosystems for the future.'
     },
     {
       year: '2026',
-      symbol: 'bolt', // Represents your modern reactive zoneless signals era
+      symbol: 'laptop.png',
+      image: 'working.png',
       title: 'Modern Reactive Systems Mastery',
-      description: 'Currently driving production-grade optimization initiatives, unifying high-throughput .NET Core infrastructures with next-gen, zoneless Angular client architectures.'
-    }
+      description: 'Championing enterprise technology transformation through AI-powered solutions, cloud-scale .NET infrastructures, and next-generation Angular architectures. Focused on delivering resilient, future-ready platforms that empower global organizations with enhanced agility, performance, and digital innovation.'
+    },
   ]);
 
   // Default active year matching your starting timeline entry point
@@ -125,6 +131,19 @@ export class ProfileService {
         "upskill your engineering team or break into next-level system design, get mentored with a practical, " +
         "no-nonsense blueprint. Click below to explore active topics, review student milestones, and claim your " +
         "free introductory class pass right now!"
+    },
+    {
+      image: 'teaching.png',
+      category: 'Teaching',
+      title: 'Full-Stack & SQL Core Code Tutorials on YouTube',
+      description: 'Teaching comprehensive, real-world database optimizations and framework architectures.',
+      action: "More details",
+      statement: "Framework theory is useless without real production execution. Dive into my specialized YouTube channel dedicated " +
+        "to stripping down complex engineering topics into clear, deployment-ready code blueprints. From end-to-end " +
+        "SQL Server CRUD optimization strategies to high-performance standalone Angular applications, every video is " +
+        "structured to build your hands-on logical skills from the ground up. Skip the generic definitions and " +
+        "master the concrete engineering decisions behind scalable software development. Click to launch the " +
+        "tutorial stream and accelerate your development journey today!"
     },
     {
       image: 'blog.gif',

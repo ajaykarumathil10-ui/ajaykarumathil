@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class Details implements OnInit {
   displayValue!: GridUpdate;
-  
+
   // Clean injection patterns
   private profile = inject(ProfileService);
   private data: GridUpdate = inject(MAT_DIALOG_DATA);
@@ -28,6 +28,7 @@ export class Details implements OnInit {
       action: this.data.action,
       statement: this.data.statement
     };
+    console.log(this.displayValue);
   }
 
   ngOnInit(): void {

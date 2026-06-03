@@ -1,4 +1,9 @@
-<nav class="fixed-bottom navbar navbar-expand-lg navbar-dark bg-light">
-    <a class="navbar-brand"  routerLink="/"><mat-icon class="menuButton" style="margin-left: 10px;">home</mat-icon></a>
-    <a class="navbar-brand" ><mat-icon class="menuButton">add</mat-icon></a>
-</nav>
+<div class="cinematic-shell">
+    <header class="site-navigation-bar" (click)="gotohome()">
+        <div class="nav-branding">
+            <span class="brand-main">{{ profile.name() }}</span>
+            <span class="brand-sub">FULL-STACK CHRONICLES</span>
+        </div>
+        <!-- <div class="nav-status-tag">CURRENTLY AT INFOSYS CHENNAI</div> -->
+    </header>
+</div>

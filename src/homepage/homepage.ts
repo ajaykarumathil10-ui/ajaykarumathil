@@ -5,11 +5,12 @@ import { MatIconModule } from '@angular/material/icon'; // <-- Import the module
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Details } from '../details/details';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule, MatIconModule, FormsModule],
+  imports: [CommonModule, MatIconModule, FormsModule,RouterModule],
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',
 })

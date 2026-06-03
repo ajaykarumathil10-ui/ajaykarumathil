@@ -1,10 +1,6 @@
 /* ==========================================================================
-   1. GLOBAL STYLES & VARIABLE TOKENS (SMOOTH SCROLL MATRIX)
+   1. GLOBAL STYLES & VARIABLE TOKENS
    ========================================================================== */
-html {
-  scroll-behavior: smooth; /* Enforces native smooth canvas translation transitions globally */
-}
-
 :host {
   --cinema-yellow: #ffef3c;
   --ivory-cream: #f9f8f6;
@@ -21,7 +17,6 @@ html {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   padding-top: 80px;
-  scroll-behavior: smooth;
 }
 
 /* ==========================================================================
@@ -69,7 +64,7 @@ html {
 }
 
 /* ==========================================================================
-   3. CINEMATIC HERO SLIDER
+   3. CINEMATIC HERO SLIDER (BOTTOM-ALIGNED TEXT LAYER)
    ========================================================================== */
 .grand-hero-slider {
   height: 55vh;
@@ -165,7 +160,7 @@ html {
 }
 
 /* ==========================================================================
-   5. PROJECT POSTER TILES MASONRY GRID
+   5. LEFT PANEL - PROJECT POSTER TILES MASONRY GRID
    ========================================================================== */
 .posters-masonry-grid {
   display: grid;
@@ -293,7 +288,7 @@ html {
 }
 
 /* ==========================================================================
-   6. BIOGRAPHY & SIDEBAR COMPONENT RULES
+   6. RIGHT PANEL - BIOGRAPHY & BRAND SIDEBAR CARD WITH SIGNATURE ENGINE
    ========================================================================== */
 .about-sidebar-card {
   background-color: var(--card-dark-slate);
@@ -353,12 +348,58 @@ html {
   animation-delay: 2.4s;
 }
 
+.feature-banner-frame {
+  position: relative;
+  height: 180px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-muted);
+}
+
+.feature-banner-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-text-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, transparent 80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+}
+
+.banner-text-overlay h4 {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin: 0 0 0.25rem 0;
+  color: var(--cinema-yellow);
+  font-weight: 800;
+}
+
+.banner-text-overlay p {
+  font-size: 0.85rem;
+  margin: 0;
+  color: #c9d1d9;
+}
+
 /* ==========================================================================
-   7. STABLE HORIZONTAL TIMELINE LAYOUT (SPACE OPTIMIZED CORE RULES)
+   7. ENFORCED CODESYMBOLS TIMELINE TIMELINE LINE MECHANISM (SPACE OPTIMIZED)
    ========================================================================== */
+.profile-page-canvas {
+  background-color: var(--deep-abyss, #0d1117);
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+
 .artistic-timeline-container {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1300px;
   margin: 4rem auto;
   padding: 3rem 2rem;
   background-color: var(--card-dark-slate);
@@ -392,7 +433,7 @@ html {
   position: relative;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto 1.5rem auto; /* FIXED: Compresses excessive gap space downwards to description block */
+  margin: 0 auto 1.5rem auto; /* FIXED: Compressed space footprint to match homepage.css settings */
   padding: 1.5rem 0;
   box-sizing: border-box;
 }
@@ -409,9 +450,9 @@ html {
 
 .connecting-wire {
   position: absolute;
-  top: 61px; /* FIXED: Perfectly aligned cross-intersection coordinate relative to horizontal node axis center */
-  left: 26px; /* Indented exactly by half of a 52px circle element width boundary parameter */
-  right: 26px; /* Locks right boundary tracking safely onto final circular layout target */
+  top: 43px; /* FIXED: Calibrated cross-intersection to balance standard circle node core heights */
+  left: 26px; /* Indented to match circle center start point alignment constraints */
+  right: 26px; /* Locks trajectory precisely to the last item bounds */
   height: 2px;
   background-color: rgba(139, 148, 158, 0.2);
   z-index: 1;
@@ -423,7 +464,6 @@ html {
   align-items: center;
   cursor: pointer;
   text-align: center;
-  user-select: none;
 }
 
 .node-year-label {
@@ -431,93 +471,90 @@ html {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-grey);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   letter-spacing: 0.5px;
-  transition: color 0.3s ease;
-}
-
-.perspective-stage-3d {
-  position: relative;
-  width: 56px;
-  height: 56px;
+  transition: color 0.2s ease;
 }
 
 .code-symbol-circle {
   width: 52px;
   height: 52px;
   background-color: var(--text-grey);
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid var(--border-muted);
   border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  overflow: hidden;
   position: relative;
   z-index: 5;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.code-symbol-circle img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  filter: grayscale(0%) brightness(1.0) opacity(1) !important;
-  transition: all 0.3s ease;
+.timeline-custom-node-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-/* Hover State Interactions */
+.symbol-txt {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-grey);
+}
+
+/* Node Hover Configurations */
 .timeline-node-wrapper:hover .code-symbol-circle {
-  border-color: rgba(255, 239, 60, 0.6);
-  transform: scale(1.05);
+  border-color: #cbd5e1;
 }
 
 .timeline-node-wrapper:hover .node-year-label {
   color: var(--ivory-cream);
 }
 
-/* Active Highlight Elements */
+/* Selected Highlight State Elements */
 .timeline-node-wrapper.active .node-year-label {
   color: var(--cinema-yellow);
   font-weight: 700;
 }
 
 .timeline-node-wrapper.active .code-symbol-circle {
-  background: var(--cinema-yellow) !important;
-  border-color: #ffffff;
+  border-color: var(--cinema-yellow);
+  background-color: var(--cinema-yellow);
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(255, 239, 60, 0.6);
+  box-shadow: 0 0 15px rgba(255, 239, 60, 0.4);
 }
 
-.timeline-node-wrapper.active .code-symbol-circle img {
-  filter: contrast(1.2) invert(0) brightness(2) !important;
+.timeline-node-wrapper.active .symbol-txt {
+  color: var(--deep-abyss);
 }
 
 /* ==========================================================================
-   8. NARRATIVE PLATFORM DISPLAY VIEWPORT LAYOUT & CORNER CIRCUITS SWEEP
+   8. NARRATIVE LAYOUT STRUCTURE WITH ACTIVE SLOW CORNER RUNNING BEAM
    ========================================================================== */
 .timeline-narrative-display {
   min-height: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;   /* FIXED: Tightens padding footprint gap down from timeline line grid section */
+  margin-top: 0.5rem; /* FIXED: Pinched row padding boundary bounds */
   border-top: 1px solid rgba(33, 38, 45, 0.5);
-  padding-top: 1.5rem; 
+  padding-top: 1.5rem;
 }
 
 .narrative-card {
   text-align: center;
   max-width: 750px;
-  position: relative; /* Context tracking pivot anchor for pseudo elements */
-  background-color: #11151c; /* Matte slate bounding field layer background */
+  position: relative; /* Fixed: Absolute context anchor for corner running paths */
+  background-color: #11151c;
   padding: 2.5rem;
   border-radius: 8px;
-  overflow: hidden; /* Clips sweeping light parameters cleanly inside frame corner geometry profiles */
+  overflow: hidden; /* Clips sweeping light parameters cleanly inside border limits */
   box-sizing: border-box;
 }
 
-/* High-Velocity Conic Laser Beam Core */
+/* High-Velocity Running Light Ray Core */
 .narrative-card::before {
   content: '';
   position: absolute;
@@ -529,28 +566,29 @@ html {
     transparent,
     transparent 40%,
     rgba(255, 239, 60, 0.1) 45%,
-    var(--cinema-yellow) 50%,    /* Core glowing light particle vector beam */
+    var(--cinema-yellow) 50%,
     rgba(255, 239, 60, 0.1) 55%,
     transparent 60%
   );
   z-index: 1;
-  animation: slowCornerLightSweep 8s linear infinite; /* Adjustable Time Vector: 8s makes it look beautifully slow and smooth */
+  animation: slowCornerLightSweep 8s linear infinite;
 }
 
-/* Mask Block Layer to Isolate Inner Container Prose Space */
+/* Foreground Mask Covering Center To Expose 1.5px Edge Line */
 .narrative-card::after {
   content: '';
   position: absolute;
-  inset: 1.5px; /* Determines the precise pixel thickness of your tracing border beam */
+  inset: 1.5px;
   background-color: var(--card-dark-slate);
   border-radius: 6.5px;
   z-index: 2;
 }
 
+.image-container,
 .narrative-title,
 .narrative-body {
   position: relative;
-  z-index: 3; /* Extrudes typography straight to foreground stacks safely over moving rays */
+  z-index: 3; /* Forces content components safely above background sweeping lasers */
 }
 
 .narrative-title {
@@ -558,7 +596,7 @@ html {
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--cinema-yellow);
-  margin: 0 0 0.75rem 0;
+  margin: 1.5rem 0 0.75rem 0;
 }
 
 .narrative-body {
@@ -570,7 +608,7 @@ html {
 }
 
 /* ==========================================================================
-   9. ANCHOR ANIMATIONS KEYFRAMES (CINEMATIC TEXT ERUPTION ENGINE)
+   9. RUNTIME HARDWARE ACCELERATED CORE ANIMATIONS (TEXT ERUPTION ENGAGED)
    ========================================================================== */
 .animate-fade-in {
   animation: cinematicTextEruption 0.5s cubic-bezier(0.25, 1, 0.3, 1) forwards;
@@ -639,18 +677,56 @@ html {
 }
 
 /* ==========================================================================
-   11. RESPONSIVE MEDIA VIEWPORT BREAKPOINTS (MOMENTUM SWIPING OPTIMIZATION)
+   11. RESPONSIVE MEDIA BREAKPOINTS & MOMENTUM MOBILE DRIFT TRACKING
    ========================================================================== */
 @media (max-width: 968px) {
-  .magazine-grid-wrapper { grid-template-columns: 1fr; gap: 3rem; padding: 2rem 1rem; }
-  .site-navigation-bar { padding: 1rem 1.5rem; }
-  .cinematic-shell { padding-top: 60px; }
-  .grand-hero-slider { padding: 2rem 1.5rem; height: 50vh; }
-  .slider-billboard-content h2 { font-size: 1.85rem; }
+  .magazine-grid-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 2rem 1rem;
+  }
+
+  .site-navigation-bar {
+    padding: 1rem 1.5rem;
+  }
+
+  .cinematic-shell {
+    padding-top: 60px;
+  }
+
+  .grand-hero-slider {
+    padding: 2rem 1.5rem;
+    height: 50vh;
+  }
+
+  .slider-billboard-content h2 {
+    font-size: 1.85rem;
+  }
+
+  .symbol-timeline-track {
+    width: 100%;
+  }
+
+  .code-symbol-circle {
+    width: 58px;
+    height: 58px;
+  }
+
+  .symbol-txt {
+    font-size: 0.85rem;
+  }
+
+  .narrative-title {
+    font-size: 1.25rem;
+  }
+
+  .narrative-body {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 650px) {
-  .cinematic-shell {
+  .profile-page-canvas {
     overflow-y: auto !important;
     overflow-x: hidden !important;
   }
@@ -660,7 +736,7 @@ html {
     white-space: nowrap;
     padding: 1.5rem 1rem;
     width: 100%;
-    -webkit-overflow-scrolling: touch; /* Kinetic momentum drag scrolling for touch views */
+    -webkit-overflow-scrolling: touch; /* Kinetic mobile gesture drift optimization */
     scroll-behavior: smooth;
   }
 
@@ -676,11 +752,11 @@ html {
 
   .connecting-wire {
     position: absolute;
-    top: 61px;
+    top: 43px; /* Holds core horizontal grid alignments lock across screen scales */
     left: 26px;
     right: 26px;
     height: 2px;
-    background-color: rgba(139, 148, 158, 0.25); /* Stable grey wire core placeholder contrast */
+    background-color: rgba(139, 148, 158, 0.25);
     z-index: 1;
   }
 
@@ -711,6 +787,315 @@ html {
   .narrative-card {
     text-align: center;
     max-width: 750px;
-    padding: 1.5rem; /* Re-balanced compact padding configurations to fit perfectly over mobile screens */
+    padding: 1.5rem 0; /* Compact edge padding fields across mobile viewport margins */
   }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 2.8 / 2;
+    object-fit: cover;
+    object-position: center center;
+    margin-bottom: 20px;
+  }
+
+  .narrative-title,
+  .narrative-body {
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+
+  .card-img.zoomable {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .card-img.zoomable:hover {
+    transform: scale(1.02);
+  }
+
+  .lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.25s ease-out;
+  }
+
+  .lightbox-img {
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    animation: scaleUp 0.25s ease-out;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scaleUp { from { transform: scale(0.9); } to { transform: scale(1); } }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .image-container:hover .card-img.zoomable {
+    transform: scale(1.03);
+  }
+
+  .click-hint {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: sans-serif;
+    font-weight: 500;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background-color 0.2s ease;
+  }
+
+  .image-container:hover .click-hint {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .hint-icon { font-size: 13px; }
+}
+
+/* ==========================================================================
+   12. MASTER CANVAS OVERRIDES, MATRIX INFRASTRUCTURES & OTHER UTILITIES
+   ========================================================================== */
+.profile-nav-header {
+  max-width: 1300px;
+  margin: 0 auto 2rem auto;
+  padding: 0 2rem;
+}
+
+.back-home-link {
+  color: var(--cinema-yellow);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
+}
+
+.back-home-link:hover { opacity: 0.8; }
+
+.node-showcase-frame {
+  margin-top: 2.5rem;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-muted);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.showcase-media-asset {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.profile-matrix-section {
+  max-width: 1300px;
+  margin: 5rem auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.tech-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.tech-matrix-card {
+  background-color: var(--card-dark-slate);
+  border: 1px solid var(--border-muted);
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+.tech-matrix-card h3 {
+  color: var(--ivory-cream);
+  margin: 0 0 1.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-left: 3px solid var(--cinema-yellow);
+  padding-left: 0.75rem;
+}
+
+.skill-blueprint-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.skill-blueprint-list li {
+  font-size: 0.95rem;
+  color: var(--text-grey);
+  line-height: 1.5;
+}
+
+.bullet-code {
+  color: var(--cinema-yellow);
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  font-family: monospace;
+}
+
+.projects-masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 500px) {
+  .projects-masonry-grid { grid-template-columns: 1fr; }
+}
+
+.project-poster-card {
+  background-color: var(--card-dark-slate);
+  border: 1px solid var(--border-muted);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-poster-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 239, 60, 0.3);
+}
+
+.project-tag {
+  color: var(--cinema-yellow);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.project-details h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: #fff;
+}
+
+.project-details p {
+  font-size: 0.9rem;
+  color: var(--text-grey);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.youtube-feature-card {
+  position: relative;
+  background-color: var(--card-dark-slate);
+  border: 1px solid var(--cinema-yellow);
+  border-radius: 4px;
+  padding: 3rem;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 239, 60, 0.05);
+}
+
+.card-glow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(255, 239, 60, 0.03), transparent);
+  pointer-events: none;
+}
+
+.youtube-card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.broadcast-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--cinema-yellow);
+  letter-spacing: 0.1em;
+  border: 1px solid var(--cinema-yellow);
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.channel-headline {
+  color: var(--ivory-cream);
+  font-size: 1.75rem;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.channel-paragraph {
+  color: var(--text-grey);
+  line-height: 1.7;
+  font-size: 1rem;
+  max-width: 900px;
+  margin: 0 0 2.5rem 0;
+}
+
+.launch-channel-btn {
+  display: inline-block;
+  background-color: var(--cinema-yellow);
+  color: var(--deep-abyss);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(255, 239, 60, 0.4);
+  transition: all 0.2s ease;
+}
+
+.launch-channel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(255, 239, 60, 0.6);
+  background-color: #ffe600;
 }

@@ -116,3 +116,24 @@ body {
     line-height: 1.7;
     font-size: 0.95rem;
 }
+
+.launch-channel-btn {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(219, 105, 53, 0.4);
+  transition: all 0.2s ease;
+}
+
+.launch-channel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(255, 239, 60, 0.6);
+  background-color: #ffe600;
+  color: #000000;
+}

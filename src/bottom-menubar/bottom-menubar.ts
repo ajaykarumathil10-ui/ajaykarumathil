@@ -1,30 +1,21 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
+import { ProfileService } from '../service/profile-service';
 
 @Component({
   selector: 'app-bottom-menubar',
-  imports: [MatIconModule, RouterLink],
+  imports: [MatIconModule],
   templateUrl: './bottom-menubar.html',
   styleUrl: './bottom-menubar.css',
 })
 export class BottomMenubar {
   dialog = inject(MatDialog);
-  //api = inject(ApiService);
+  profile = inject(ProfileService);
+  route = inject(Router);
 
-  // openAddTaskDialog() {
-  //   const dialogRef = this.dialog.open(AddTask, {
-  //     width: '400px', // Sets the "prompt" size
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-  //       console.log('The dialog was closed with data: from menubar', result);
-  //       // Call your api-service to POST the new task here
-  //       this.api.Gettasks();
-  //     }
-  //   });
-  // }
-
-
+  gotohome() {
+    this.route.navigateByUrl('/');
+  }
 }
